@@ -10,7 +10,8 @@ public class Message implements Serializable {
 
 	public static enum Type {
 
-		CREATE_GAME,  
+		CREATE_GAME,
+		GAME_CREATED_WAITING,
 		GET_CREATED_GAMES, 
 		LIST_GAMES, 
 		ADD_TO_GAME, 

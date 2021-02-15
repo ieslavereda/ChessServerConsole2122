@@ -67,15 +67,9 @@ public class ChessClient {
 		mOut = new Message(Message.Type.CREATE_GAME,"Crear un nuevo juego.");
 		mOut.setPlayer(player);
 		
-		try {
-			
-			oos.writeObject(mOut);
-			mIn = (Message)ois.readObject();
-			
-		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		mIn = sendMessageAndWaitResponse(mOut);
+		
+		
 
 	}
 
@@ -118,6 +112,22 @@ public class ChessClient {
 			e.printStackTrace();
 		}
 
+	}
+	
+	private Message sendMessageAndWaitResponse(Message mOut) {
+
+		Message mIn = null;
+
+		try {
+
+			oos.writeObject(mOut);
+			mIn = (Message) ois.readObject();
+
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return mIn;
 	}
 
 	private void showStartMenu() {
