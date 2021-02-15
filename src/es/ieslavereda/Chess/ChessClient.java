@@ -69,7 +69,11 @@ public class ChessClient {
 		
 		mIn = sendMessageAndWaitResponse(mOut);
 		
-		
+		if(mIn.getMessageType()==Message.Type.GAME_CREATED_WAITING) {
+			
+		} else {
+			
+		}
 
 	}
 
